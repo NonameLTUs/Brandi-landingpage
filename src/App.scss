@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+@import "~@/assets/variables";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media only screen and (max-width: 960px) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.app {
+  position: relative;
+}
+
+.content {
+  background-color: #fff;
+  position: relative;
+  max-width: 1600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.background {
+  position: fixed;
+  background-image: linear-gradient(52deg, #8a2387, #e94057, #f27121, #e94057, #8a2387, #f27121);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  background-size: 400% 400%;
+  animation: backgroundGradientAnimation 15s ease infinite;
+}
+
+@keyframes backgroundGradientAnimation {
+  0% {
+    background-position: 0 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0 50%
+  }
+}
+
+/********************
+** DIVIDER
+********************/
+.divider {
+  width: 100%;
+  height: .5rem;
+  background-color: $color-dark;
+}

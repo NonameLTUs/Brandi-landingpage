@@ -1,0 +1,13 @@
+.slider {
+  position: relative;
+  height: 80rem;
+
+  @media only screen and (max-width: 1600px) {
+    height: calc(100vw / 2);
+    margin-bottom: -8px;
+  }
+}
+
+.visible-slide {
+  position: relative;
+}

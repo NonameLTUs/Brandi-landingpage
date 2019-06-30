@@ -1,0 +1,9 @@
+@import "~@/assets/variables";
+
+.container {
+  display: inline-flex;
+
+  & > *:not(:last-child) {
+    margin-right: 1.3rem;
+  }
+}

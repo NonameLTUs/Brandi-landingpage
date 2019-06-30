@@ -1,0 +1,69 @@
+@import "~@/assets/variables";
+
+.item {
+  display: inline-block;
+  position: absolute;
+  overflow: hidden;
+  left: -100%;
+  top: 0;
+  transition: all .35s;
+
+  &:hover > .hover-container {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+  object-position: 50% 50%;
+}
+
+.hover-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-primary-dark, .9);
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .2s;
+}
+
+.icon {
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid #fff;
+    border-radius: 100rem;
+    margin-bottom: 2.9rem;
+  }
+
+  width: 2.1rem;
+  height: 1.6rem;
+  fill: #fff;
+}
+
+.title {
+  font-weight: $fw-bold;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: .9rem;
+}
+
+.categories {
+  font-weight: $fw-regular;
+  font-size: 1.4rem;
+  color: #fff;
+}

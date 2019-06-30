@@ -1,0 +1,9 @@
+@import "~@/assets/variables";
+
+.container {
+  display: grid;
+  grid-template-columns: 26rem 27rem 1fr 29rem;
+  grid-column-gap: 4.5rem;
+  background-color: $color-primary-dark;
+  padding: 10rem 21.5rem;
+}

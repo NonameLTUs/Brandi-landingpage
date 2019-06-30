@@ -1,0 +1,28 @@
+@import "~@/assets/variables";
+
+.container {
+  padding: 10rem 21.5rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 25rem 1fr auto;
+  grid-gap: 5.5rem;
+}
+
+.subHeading {
+  color: rgba($color-dark, .8);
+  font-weight: $fw-bold;
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 3.7rem 0 8rem 0;
+}
+
+/********************
+** MAP
+********************/
+.map {
+  background: url("@/assets/img/contacts-map.jpg");
+  width: 100%;
+  height: 21.5rem;
+}

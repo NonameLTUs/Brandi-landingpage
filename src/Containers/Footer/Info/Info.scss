@@ -1,0 +1,28 @@
+@import "~@/assets/variables";
+
+.container {
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.logo {
+  &-container {
+    display: flex;
+    width: 9rem;
+    height: 2.5rem;
+    margin-bottom: 4.5rem;
+  }
+
+  display: flex;
+  width: 9rem;
+  height: 9rem;
+  fill: #fff;
+}
+
+.description {
+  color: #fff;
+  font-weight: $fw-regular;
+  font-size: 1.3rem;
+  line-height: 2.4rem;
+}

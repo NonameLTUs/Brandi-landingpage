@@ -1,11 +1,9 @@
 import React from 'react';
 
-const url = 'https://willianjusten.com.br/assets/img/react-svg/sprite.svg';
+const url = `${window.location.origin}/sprite.svg`;
 
-const Icon = (props) => (
-    <svg viewBox='0 0 16 16' className={`icon icon-${props.icon}`}>
+export default props => (
+    <svg viewBox='0 0 16 16' className={props.className}>
         <use xlinkHref={`${url}#icon-${props.icon}`}/>
     </svg>
 );
-
-export default Icon;

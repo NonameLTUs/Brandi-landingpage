@@ -1,0 +1,46 @@
+@import "~@/assets/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.4rem;
+  font-weight: $fw-bold;
+  color: #fff;
+  height: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.input {
+  &-container {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  width: 100%;
+  padding: 1.5rem;
+  background-color: transparent;
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 1rem;
+  outline: none;
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 1.8rem;
+    width: 1.8rem;
+    height: 1.3rem;
+    fill: #fff;
+
+    transform: translateY(-50%);
+  }
+}
+
+.description {
+  color: #fff;
+}

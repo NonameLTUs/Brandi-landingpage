@@ -1,0 +1,19 @@
+@import "~@/assets/variables";
+
+.item {
+  border: none;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: $color-dark;
+  font-size: 1.4rem;
+  font-weight: $fw-bold;
+  border-radius: 1rem;
+  transition: all .1s ease-in-out;
+  outline: none;
+  cursor: pointer;
+
+  &.active {
+    background-color: $color-primary-dark;
+    color: #fff;
+  }
+}

@@ -1,0 +1,19 @@
+@import "~@/assets/variables";
+
+/********************
+** FEATURES
+********************/
+.container {
+  background-image: url("@/assets/img/background-facts.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10rem 28.5rem 16rem 28.5rem;
+}
+
+.facts-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+}

@@ -1,0 +1,48 @@
+@import "~@/assets/variables";
+
+/********************
+** FEATURE
+********************/
+.feature {
+  display: inline-flex;
+}
+
+/********************
+** ICON
+********************/
+.icon-container {
+  border: 1px solid $color-primary-dark;
+  border-radius: 100rem;
+  padding: 1.2rem;
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1.7rem;
+}
+
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: $color-primary-dark;
+}
+
+/********************
+** CONTENT
+********************/
+.content {
+  width: 30rem;
+}
+
+/// Heading
+.heading {
+  font-size: 2rem;
+  font-weight: $fw-s-bold;
+  color: $color-dark;
+  margin-bottom: 2rem;
+}
+
+/// Description
+.description {
+  font-size: 1.3rem;
+  font-weight: $fw-regular;
+  color: rgba($color-dark, .7);
+}
