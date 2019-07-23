@@ -5,8 +5,16 @@ import Slide from './Slide'
 import SliderDots from './SliderDots'
 import SliderLoader from './SliderLoader'
 import SliderArrows from './SliderArrows'
+import _ from "lodash";
 
 export default class Slider extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.containerRef = React.createRef();
+        this.resolution = null;
+    }
+
     state = {
         slides: [
             {
@@ -36,8 +44,18 @@ export default class Slider extends React.Component {
         ],
         activeSlide: 0,
         currentSlide: 0,
-        loading: true
+        slideResolution: null,
+        loading: true,
+        loadingDOM: true
     };
+
+    componentDidMount() {
+        this.updateSlideResolution()
+
+        this.setState({
+            loadingDOM: false
+        })
+    }
 
     changeSlide = slide => {
         const slideId = parseInt(slide, 10);
@@ -74,7 +92,30 @@ export default class Slider extends React.Component {
         this.changeSlide(slide)
     };
 
+    updateSlideResolution = () => {
+        let availableResolutions = [
+            1600, 1280, 960, 640, 480
+        ];
+        availableResolutions.sort((a, b) => a - b);
+
+        const ref = this.containerRef.current;
+        let resolution = null;
+
+        if (null !== ref) {
+            const width = ref.offsetWidth;
+            resolution = availableResolutions.filter(res => width <= res)[0];
+        }
+
+        if (this.state.slideResolution !== resolution) {
+            this.setState({
+                slideResolution: resolution
+            })
+        }
+    };
+
     render() {
+        window.addEventListener("resize", _.debounce(this.updateSlideResolution, 100));
+
         const slidesList = [];
         for (let i in this.state.slides) {
             if (this.state.slides.hasOwnProperty(i)) {
@@ -82,19 +123,25 @@ export default class Slider extends React.Component {
             }
         }
 
+        let renderedSlides = null;
+        if (!this.state.loadingDOM) {
+            renderedSlides = slidesList.map(slide => (
+                <Slide {...slide}
+                       key={slide.id}
+                       activeSlide={this.state.activeSlide}
+                       currentSlide={this.state.currentSlide}
+                       showLoader={this.state.loading}
+                       onSlideLoaded={this.onSlideLoaded}
+                       resolution={this.state.slideResolution}
+                />
+            ))
+        }
+
         return (
-            <div className={classes.slider}>
+            <div className={classes.slider} ref={this.containerRef}>
                 <div className={classes["visible-slide"]}>
                     <SliderLoader show={this.state.loading}/>
-                    {slidesList.map(slide => (
-                        <Slide {...slide}
-                               key={slide.id}
-                               activeSlide={this.state.activeSlide}
-                               currentSlide={this.state.currentSlide}
-                               showLoader={this.state.loading}
-                               onSlideLoaded={this.onSlideLoaded}
-                        />
-                    ))}
+                    {renderedSlides}
                 </div>
                 <SliderArrows prevSlide={this.prevSlide} nextSlide={this.nextSlide}/>
                 <SliderDots slides={Object.keys(this.state.slides)}

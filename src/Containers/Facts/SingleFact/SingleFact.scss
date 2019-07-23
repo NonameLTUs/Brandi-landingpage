@@ -33,6 +33,10 @@
   font-size: 6rem;
   font-weight: $fw-s-bold;
   color: #fff;
+
+  @media only screen and (max-width: 580px) {
+    margin: 2rem 0 2rem 0;
+  }
 }
 
 .title {

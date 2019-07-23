@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Info.scss'
 
 export default () => (
-    <div className={classes.info}>
+    <div className={classes.container}>
         <div className={classes.title}>Cras at ultrices erat, sed vulputate!</div>
         <div className={classes.address}>
             2345 Setwant natrer, 1234,<br/>

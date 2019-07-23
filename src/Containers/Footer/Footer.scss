@@ -3,7 +3,47 @@
 .container {
   display: grid;
   grid-template-columns: 26rem 27rem 1fr 29rem;
-  grid-column-gap: 4.5rem;
+  grid-gap: 4.5rem;
   background-color: $color-primary-dark;
   padding: 10rem 21.5rem;
+
+  @media only screen and (max-width: 1600px) {
+    grid-template-columns: repeat(4, auto);
+  }
+  @media only screen and (max-width: 1410px) {
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 15vw;
+  }
+  @media only screen and (max-width: 1240px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 5vw;
+  }
+  @media only screen and (max-width: 1020px) {
+    padding: 10rem 15rem;
+  }
+  @media only screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+
+    & > *:not(:last-child) {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  @media only screen and (max-width: 630px) {
+    padding: 8rem 7.5rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    & > *:not(:last-child) {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+  @media only screen and (max-width: 540px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > *:not(:last-child) {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
 }

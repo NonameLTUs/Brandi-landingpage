@@ -45,7 +45,9 @@ const config = {
             {
                 test: /.js$/,
                 loader: 'babel-loader',
-                //exclude: [path.join(__dirname, '../node_modules')] // write your node_modules path
+                query: {
+                    compact: false
+                }
             },
             {
                 test: /\.(png|jpe?g|gif|ico|svg)$/,

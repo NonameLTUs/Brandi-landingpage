@@ -7,6 +7,15 @@
   display: flex;
   flex-direction: column;
   transform: translateY(-50%);
+
+  @media only screen and (max-width: 800px) {
+    top: auto;
+    bottom: 3rem;
+    right: auto;
+    left: 50%;
+    flex-direction: row;
+    transform: translateX(-50%);
+  }
 }
 
 .dot {
@@ -19,8 +28,22 @@
   cursor: pointer;
   transition: all .2s;
 
+  @media only screen and (max-width: 960px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
   &:not(:last-child) {
     margin-bottom: 1.5rem;
+
+    @media only screen and (max-width: 960px) {
+      margin-bottom: 3rem;
+    }
+
+    @media only screen and (max-width: 800px) {
+      margin-bottom: 0;
+      margin-right: 3rem;
+    }
   }
 
   &:not(.loading):hover {

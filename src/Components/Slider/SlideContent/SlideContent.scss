@@ -9,6 +9,10 @@
   color: #fff;
   margin: 0;
 
+  @media only screen and (max-width: 1130px) {
+    font-size: 5rem;
+  }
+
   /// Highlight
   span {
     font-weight: $fw-bold;
@@ -24,6 +28,10 @@
   font-weight: $fw-light;
   color: #fff;
   margin: 0;
+
+  @media only screen and (max-width: 1130px) {
+    font-size: 3.6rem;
+  }
 
   /// Highlight
   span {
@@ -42,6 +50,10 @@
   color: #fff;
   margin: 0;
   padding: 0 6.6rem;
+
+  @media only screen and (max-width: 1130px) {
+    font-size: 1.5rem;
+  }
 
   &:not(:empty):before,
   &:not(:empty):after {
@@ -68,9 +80,16 @@
 /*************************************/
 .icons-container {
   display: inline-block;
+  position: absolute;
+  bottom: 0;
   padding: 2rem;
   border-radius: 100rem;
   min-height: 1.6rem;
+  justify-self: flex-end;
+
+  @media only screen and (max-width: 800px) {
+    bottom: 4rem;
+  }
 
   &:not(:empty) {
     background: rgba(#000, .7);

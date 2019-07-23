@@ -22,20 +22,31 @@ export default class Slide extends React.Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.currentSlide !== prevState.currentSlide || prevProps.activeSlide !== prevState.activeSlide) {
+        if (
+            prevProps.currentSlide !== prevState.currentSlide ||
+            prevProps.activeSlide !== prevState.activeSlide ||
+            prevProps.resolution !== this.props.resolution
+        ) {
             this.loadImage();
         }
     }
 
+    getImageUrl(id) {
+        const filename = `${id}-${this.props.resolution}px.jpg`;
+
+        return `${window.location.origin}/img/slider/${filename}`;
+    }
+
     loadImage() {
         if (this.props.activeSlide === this.props.id) {
-            const url = `${window.location.origin}/img/slider/${this.props.id}.jpg`;
+            const url = this.getImageUrl(this.props.id);
             let downloadingImage = new Image();
             downloadingImage.onload = () => {
                 this.setState({
                     src: url,
                     currentSlide: this.props.currentSlide,
-                    activeSlide: this.props.activeSlide
+                    activeSlide: this.props.activeSlide,
+                    resolution: this.props.resolution
                 });
                 this.props.onSlideLoaded();
             };

@@ -1,7 +1,8 @@
-import React from 'react'
+ import React from 'react'
 import classes from './index.scss'
 
 import SliderDots from './SliderDots'
+import _ from "lodash";
 
 export default class InlineSlider extends React.Component {
     constructor(props) {
@@ -9,6 +10,8 @@ export default class InlineSlider extends React.Component {
 
         this.sliderElementsRef = React.createRef();
         this.sliderElementsContainerRef = React.createRef();
+
+        this.pageGap = 17;
     }
 
     state = {
@@ -22,15 +25,6 @@ export default class InlineSlider extends React.Component {
         this.updateCalculations();
     }
 
-    componentDidUpdate() {
-        this.updateCalculations();
-    }
-
-    initWatching() {
-        window.onresize = () => this.updateCalculations();
-    }
-
-
     allChildren = () => this.sliderElementsRef.current.children;
 
     updateCalculations = () => {
@@ -40,12 +34,13 @@ export default class InlineSlider extends React.Component {
         if (slidesPerPage !== this.state.slidesPerPage) {
             const totalPages = this.calculateTotalPages(children, slidesPerPage);
             const pagesHeights = this.calculatePagesHeights(slidesPerPage, totalPages);
-
-            this.setState({
-                slidesPerPage,
-                totalPages,
-                pagesHeights
-            })
+            if (totalPages !== this.state.totalPages) {
+                this.setState({
+                    slidesPerPage,
+                    totalPages,
+                    pagesHeights
+                })
+            }
         }
     };
 
@@ -88,21 +83,29 @@ export default class InlineSlider extends React.Component {
 
     calculateSlidesCountPerPage = children => {
         const container = this.sliderElementsRef.current;
-        const containerWidth = container.clientWidth;
+        const containerWidth = container.offsetWidth;
         const elementWidth = children[0].offsetWidth;
         const gapBetweenItems = getComputedStyle(container).gridColumnGap.replace('px', '');
         let slidesPerPage = Math.floor(containerWidth / elementWidth);
+
         const gapsWidth = gapBetweenItems * (slidesPerPage - 1);
 
-        return Math.floor((containerWidth - gapsWidth) / elementWidth);
+        slidesPerPage = Math.floor((containerWidth - gapsWidth) / elementWidth);
+
+        if (0 === slidesPerPage) {
+            slidesPerPage = 1;
+        }
+
+        return slidesPerPage;
     };
 
     getDistanceToPage = page => {
         const {pagesHeights} = this.state;
         let distance = 0;
+        const pageGap = this.pageGap;
 
         for (let i = 0; i <= page; i++) {
-            distance += pagesHeights[i - 1] || 0;
+            distance += (pagesHeights[i - 1] + pageGap) || 0;
         }
 
         return distance;
@@ -114,15 +117,21 @@ export default class InlineSlider extends React.Component {
         })
     };
 
+    resize = () => {
+        this.updateCalculations();
+        this.setPage(0);
+    };
+
     render() {
-        this.initWatching();
+        window.addEventListener("resize", _.debounce(this.resize, 100));
 
         const stylesOfElementsContainer = {
             height: `${this.state.pagesHeights[this.state.currentPage]}px`
         };
         const stylesOfElementsList = {
             marginTop: `-${(this.getDistanceToPage(this.state.currentPage))}px`,
-            gridTemplateColumns: `repeat(${this.state.slidesPerPage || 1}, 1fr)`
+            gridTemplateColumns: `repeat(${this.state.slidesPerPage || 1}, 1fr)`,
+            gridRowGap: `${this.pageGap}px`
         };
 
         return (

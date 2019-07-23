@@ -18,6 +18,11 @@
   cursor: pointer;
   transition: all .2s;
 
+  @media only screen and (max-width: 960px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
   &:not(:last-child) {
     margin-right: 1.5rem;
   }

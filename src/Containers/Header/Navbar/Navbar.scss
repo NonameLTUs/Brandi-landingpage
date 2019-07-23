@@ -8,6 +8,11 @@
   width: 100%;
   background-color: rgba(16, 22, 54, .2);
   z-index: 500;
+
+  @media only screen and (max-width: 960px) {
+    position: static;
+    background-color: $color-dark;
+  }
 }
 
 .container {

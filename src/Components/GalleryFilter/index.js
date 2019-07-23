@@ -54,10 +54,6 @@ export default class GalleryFilter extends React.Component {
         this.updateItemsPlacing();
     }
 
-    initWatching() {
-        window.onresize = _.debounce(this.updateItemsPlacing, 100)
-    }
-
     changeState = state => {
         new Promise(resolve => {
             this.setState({currentState: state});
@@ -134,7 +130,7 @@ export default class GalleryFilter extends React.Component {
     };
 
     render() {
-        this.initWatching();
+        window.addEventListener("resize", _.debounce(this.updateItemsPlacing, 100));
 
         let renderedItems = this.props.items.map(item => (
                 <Item key={item.id}
