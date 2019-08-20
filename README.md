@@ -20,3 +20,6 @@ Your app is ready to be deployed!
 
 ### Author of template
 https://dribbble.com/shots/1481909-Freebie-Brandi-One-Page-Template-PSD
+
+## Live preview
+[Link to live preview](https://nonameltus.github.io/Brandi-landingpage/)
