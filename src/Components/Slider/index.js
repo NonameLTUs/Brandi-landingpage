@@ -50,7 +50,7 @@ export default class Slider extends React.Component {
     };
 
     componentDidMount() {
-        this.updateSlideResolution()
+        this.updateSlideResolution();
 
         this.setState({
             loadingDOM: false

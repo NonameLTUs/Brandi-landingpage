@@ -4,7 +4,8 @@
 ** FEATURES
 ********************/
 .container {
-  background: $color-dark no-repeat cover;
+  background: $color-dark no-repeat;
+  background-size: cover;
   padding: 10rem 8.5rem 16rem 8.5rem;
 
   @media only screen and (max-width: 1430px) {

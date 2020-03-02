@@ -8,7 +8,7 @@ export default props => {
 
     const categoriesNamingsArray = categories.map(cat => allCategories[cat]);
 
-    const imageUrl = `http://localhost:8080/img/works/${id}.jpg`;
+    const imageUrl = `${process.env.PUBLIC_URL}/img/works/${id}.jpg`;
 
     const isVisible = (state === 'all' || categories.indexOf(state) > -1);
 

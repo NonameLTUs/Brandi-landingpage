@@ -4,7 +4,7 @@ import classes from './SingleMember.scss'
 import {Icon} from '@/Components'
 
 export default props => {
-    const url = `${window.location.origin}/img/team/${props.id}.jpg`;
+    const url = `${process.env.PUBLIC_URL}/img/team/${props.id}.jpg`;
 
     const renderedLinks = props.links.map(link => (
         <a href={link.url}

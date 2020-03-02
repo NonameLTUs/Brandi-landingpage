@@ -29,21 +29,7 @@
       margin-bottom: 1rem;
     }
   }
-  @media only screen and (max-width: 630px) {
-    padding: 8rem 7.5rem;
-    grid-template-columns: repeat(2, 1fr);
-
-    & > *:not(:last-child) {
-      padding-bottom: 0;
-      margin-bottom: 0;
-    }
-  }
-  @media only screen and (max-width: 540px) {
-    grid-template-columns: repeat(2, 1fr);
-
-    & > *:not(:last-child) {
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-    }
+  @media only screen and (max-width: 600px) {
+    padding: 6rem 7rem;
   }
 }

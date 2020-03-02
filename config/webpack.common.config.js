@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const path = require('path');
+const dotenv = require('dotenv');
 
 const BUILD_DIR = path.resolve('./build');
 const APP_DIR = path.resolve('./src');
@@ -18,6 +20,12 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
         removeRedundantAttributes: true
     }
 });
+
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+}, {});
 
 const config = {
     entry: APP_DIR + '/index.js',
@@ -64,7 +72,8 @@ const config = {
         contentBase: path.join(__dirname, '/../public')
     },
     plugins: [
-        HtmlWebpackPluginConfig
+        HtmlWebpackPluginConfig,
+        new webpack.DefinePlugin(envKeys)
     ]
 };
 

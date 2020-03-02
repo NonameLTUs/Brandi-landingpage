@@ -34,7 +34,7 @@ export default class Slide extends React.Component {
     getImageUrl(id) {
         const filename = `${id}-${this.props.resolution}px.jpg`;
 
-        return `${window.location.origin}/img/slider/${filename}`;
+        return `${process.env.PUBLIC_URL}/img/slider/${filename}`;
     }
 
     loadImage() {
@@ -64,7 +64,7 @@ export default class Slide extends React.Component {
                     <Heading>{heading}</Heading>
                     <SubHeading>{subHeading}</SubHeading>
                     <Description>{description}</Description>
-                    <div style={{height: '5rem'}}/>
+                    <div className={classes.gap}/>
                     <Icons icons={icons}/>
                 </React.Fragment>
             )
